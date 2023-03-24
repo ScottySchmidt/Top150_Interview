@@ -23,6 +23,39 @@ Given letters, we can form the words "ax" (4+5), "bx" (4+5) and "cx" (4+5) with 
 Word "xxxz" only get a score of 25.
 """
 
+
+# Second draft will correctly analyze a total score from the words given. However, how do you find the max poossible score? And do it dynamically?
+class Solution(object):
+    def maxScoreWords(self, words, letters, score):
+        abcList=['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 
+        'q', 'r', 's', 't', 'u', 'v',   'w', 'x', 'y', 'z']
+        scoreDic=dict(zip(abcList, score))
+        totalScore = 0
+
+        newLetters=[]
+        for l in letters:
+            #print(newLetters.count(l), " count")
+            if newLetters.count(l) < 3:
+                newLetters.append(l)   #print(newLetters)
+        
+        newLetters=[str(x) for x in newLetters] #print(newLetters, " new letters", type(newLetters))
+
+        for word in words:
+            for w in word:
+                valid = True
+                wordScore = 0
+                if w not in newLetters:
+                    valid = False
+                else:
+                    s = scoreDic.get(w)
+                    wordScore = wordScore + int(s)
+            if valid:
+                totalScore = totalScore + wordScore
+                newLetters = [l for l in newLetters if l not in list(word)]
+
+        return totalScore
+
+
 # My first attempt using a for loop will not recognize if a letter does not have many of the same letter remaining.
 # Specifically, the word Dad. This algo below will not have two d's left.
 class Solution(object):
