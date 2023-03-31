@@ -1,6 +1,5 @@
 """
-1255. Maximum Score Words Formed by Letters
-HARD Level:  https://leetcode.com/problems/maximum-score-words-formed-by-letters/
+1255. Maximum Score Words Formed by Letters, HARD Level:  https://leetcode.com/problems/maximum-score-words-formed-by-letters/
 
 Given a list of words, list of  single letters (might be repeating) and score of every character.
 Return the maximum score of any valid set of words formed by using the given letters (words[i] cannot be used two or more times).
