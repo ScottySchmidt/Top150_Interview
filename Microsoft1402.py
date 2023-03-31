@@ -1,5 +1,5 @@
 """ 
-1402. Reducing Dishes https://leetcode.com/problems/reducing-dishes/
+1402. Reducing Dishes, Hard level: https://leetcode.com/problems/reducing-dishes/
 
 A chef has collected data on the satisfaction level of his n dishes. Chef can cook any dish in 1 unit of time.
 Like-time coefficient of a dish is defined as the time taken to cook that dish including previous dishes multiplied by its satisfaction level i.e. time[i] * satisfaction[i].
