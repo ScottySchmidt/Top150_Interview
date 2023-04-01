@@ -18,6 +18,24 @@ Output: 20
 Explanation: Dishes can be prepared in any order, (2*1 + 3*2 + 4*3 = 20)
 """
 
+
+# Final solution, doing a big first approach:
+def maxSatisfaction(self, satisfaction):
+    n = len(satisfaction)
+    satisfaction.sort(reverse=True) # Sort values by biggest first
+
+    final = 0 # total count
+    accSum = 0 # current list count
+
+    for i in range(n): # loop through every number 
+        accSum = accSum + satisfaction[i] # add every number in list including current num
+        if accSum < 0:
+           break # this curr num provides no value
+        final = final + accSum # if 
+    return final # final value should be greater than 0 since we only add positives 
+
+
+
 # My original solution is incorrect because it does not find the accumulative sum if that dish adds value greater than 0:
 class Solution(object):
     def maxSatisfaction(self, satisfaction):
