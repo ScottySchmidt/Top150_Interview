@@ -3,6 +3,8 @@
 Given two sorted arrays nums1 and nums2 of size m and n respectively, return the median of the two sorted arrays.
 
 The overall run time complexity should be O(log (m+n)).
+This problem is considered HARD because of coding efficiency. 
+My solution is good, but considered slow in comparision to chatGBT.
 """
 
 # My solution with 39% runtime and 28% memory:
