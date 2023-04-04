@@ -18,6 +18,10 @@ class Solution(object):
             return a[mid]/1 # // takes the floor num
         else:  # if even
             return (a[mid]+a[mid-1])/2.0 #2.0 will return as a float
+    """
+    Your solution works correctly, but it has a time complexity of O((m+n)log(m+n)) due to the sorting step, which is not optimal. 
+    The problem statement requires the solution to have a time complexity of O(log(m+n)).
+    """
 
         
         
