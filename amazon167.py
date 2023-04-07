@@ -12,7 +12,7 @@ Output: [1,2]
 Explanation: The sum of 2 and 7 is 9. Therefore, index1 = 1, index2 = 2. We return [1, 2].
 """
 
-# Final Solution:
+# Final Solution with time complexity of O(n):
 class Solution(object):
     def twoSum(self, numbers, target):
         l = 0 
