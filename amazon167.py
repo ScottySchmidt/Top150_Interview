@@ -12,6 +12,22 @@ Output: [1,2]
 Explanation: The sum of 2 and 7 is 9. Therefore, index1 = 1, index2 = 2. We return [1, 2].
 """
 
+# Final Solution:
+class Solution(object):
+    def twoSum(self, numbers, target):
+        l = 0 
+        r = len(numbers)-1
+
+        while l < r:
+            total = numbers[l] + numbers[r] 
+            if total<target:
+                l=l+1 
+            elif total>target:
+                r=r-1
+            else:
+                return [l+1, r+1]
+
+
 # Passes all tests but runtime error:
 class Solution(object):
     def twoSum(self, numbers, target):
