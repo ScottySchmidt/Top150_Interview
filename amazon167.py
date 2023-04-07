@@ -12,8 +12,7 @@ Output: [1,2]
 Explanation: The sum of 2 and 7 is 9. Therefore, index1 = 1, index2 = 2. We return [1, 2].
 """
 
-
-# My original solution fails this test case: [5,25,75] because r gets increased past length while not checking all of l yet:
+# Passes all tests but runtime error:
 class Solution(object):
     def twoSum(self, numbers, target):
         length = len(numbers)
@@ -29,3 +28,10 @@ class Solution(object):
                 l=l+l
                 if l == r:
                     r=r+1
+        
+        # In the rare case r gets bigger than length like this test case [5,25,75]:
+        s=len(numbers)-1 # only need to check the final "r" value now
+        
+        for i in range(0, length):
+            if numbers[i] + numbers[s] == target:
+                return [i+1, s+1]
