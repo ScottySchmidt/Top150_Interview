@@ -8,7 +8,7 @@ Return the maximum amount of water a container can store.
 Notice that you may not slant the container.
 """
 
-# Solution 1 using brute force gets runtime error:
+# Brute force gets runtime error:
 class Solution(object):
     def maxArea(self, height):
         length = len(height)
@@ -22,3 +22,24 @@ class Solution(object):
                 area = small * diff
                 max_area = max(area, max_area)
         return max_area
+    
+# Linear runtime final solution:
+class Solution(object):
+    def maxArea(self, height):
+        max_area = 0 
+        l = 0 
+        r = len(height) - 1
+
+        while l < r:  
+            h = min(height[l], height[r])
+            w = r-l
+
+            area = h * w
+            max_area = max(area, max_area)
+            if height[l] <= height[r]:
+                l=l+1
+            else:
+                r=r-1
+        return max_area
+
+  
