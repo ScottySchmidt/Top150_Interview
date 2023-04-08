@@ -18,6 +18,36 @@ Using a triple for loop is not good here as that would be log of O(n3).
 Therefore, my solution uses a while loop with index i.
 """
 
+# Final solution:
+class Solution:
+    def threeSum(self, nums):
+        ans = []
+        nums.sort()
+
+        for i in range(len(nums)-2):
+            start = i+1
+            end = len(nums)-1
+            while start < end:  
+                # Get Three Distinct Numbers:
+                n = nums[i]
+                l = nums[start]
+                r = nums[end]
+                s = n+l+r
+                if s > 0:
+                    end=end-1
+                elif s < 0:
+                    start=start+1
+                else:
+                    trio=[n, l, r]
+                    if trio not in ans:
+                        ans.append(trio)
+                    start=start+1
+                    end=end-1
+        return ans
+
+
+
+
 # My initial solution gets runtime error:
 class Solution:
     def threeSum(self, nums):
