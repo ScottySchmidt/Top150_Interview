@@ -19,14 +19,14 @@ Therefore, my solution uses a while loop with index i.
 """
 
 # My initial solution gets runtime error:
-class Solution(object):
+class Solution:
     def threeSum(self, nums):
-        combos = []
+        ans = []
         l = 0
         r = len(nums)-1
+        nums.sort()
 
-        while l+1 < r:  #minus two so no index error (since n3 does i+2)
-
+        while l+1 < r:  
             # Get Three Distinct Numbers:
             n1 = nums[l]
             n2 = nums[l+1]
@@ -38,5 +38,6 @@ class Solution(object):
                 l=l+1
             else:
                 trio=[n1, n2, r1]
-                combos.append(trio)
-        return combos
+                if trio not in ans:
+                    ans.append(trio)
+        return ans
