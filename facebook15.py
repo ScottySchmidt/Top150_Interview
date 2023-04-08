@@ -24,10 +24,10 @@ class Solution:
         ans = []
         nums.sort()
 
-        for i in range(len(nums)-2):
-            start = i+1
-            end = len(nums)-1
-            while start < end:  
+        for i in range(len(nums)-2):  # the very start will never need to check two in front at the end
+            start = i+1 # always checks the start of the number ahead of i
+            end = len(nums)-1 # minus one to avoid index error
+            while start < end:  # start should never pass end. that would mean we double checking numbers.
                 # Get Three Distinct Numbers:
                 n = nums[i]
                 l = nums[start]
@@ -41,6 +41,7 @@ class Solution:
                     trio=[n, l, r]
                     if trio not in ans:
                         ans.append(trio)
+                    # below is how to avoid memory error, need a new set of pairs to check:
                     start=start+1
                     end=end-1
         return ans
