@@ -13,20 +13,20 @@ Input: nums = [1,0,-1,0,-2,2], target = 0
 Output: [[-2,-1,1,2],[-2,0,0,2],[-1,0,0,1]]
 """
 
-# Passes 128 / 292 testcases passed:
+# Beats 50% runtime: 
 class Solution(object):
     def fourSum(self, nums, target):
         nums.sort()
         quads = set()
         n = len(nums)
 
-        for i in range(n-3):
-            for j in range(i+1, n-2):
+        for i in range(n):
+            for j in range(i+1, n):
                 start = j + 1
                 end = n-1
-                diff = target - nums[i] - nums[j]
+                two = nums[i] + nums[j]
                 while start < end:
-                    total = nums[start] + nums[end] + diff
+                    total = nums[start] + nums[end] + two
                     if total < target:
                         start = start+1
                     elif total > target:
@@ -36,3 +36,8 @@ class Solution(object):
                         end=end-1
                         start=start+1
         return quads
+    
+"""
+In order to make this solution faster, some continue the sorted list on equal values to avoid duplicates.
+But I find my solution easier to understand and more readable using a set.
+"""
