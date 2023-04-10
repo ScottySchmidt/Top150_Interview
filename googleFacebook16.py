@@ -12,14 +12,14 @@ Explanation: The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).
 ------------------------------
 """
 
-# Original solution passes 28 / 99 cases:
+# Original solution passes 29 / 99 cases:
 class Solution(object):
     def threeSumClosest(self, nums, target):
         nums.sort()
-        closest = 9999
+        closest = float("inf")
 
         for i in range(len(nums)-2):
-            start = 0
+            start = i + 1
             end = len(nums) - 1
             while start < end:
                 s = nums[i] + nums[start] + nums[end]
