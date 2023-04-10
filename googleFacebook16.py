@@ -12,11 +12,12 @@ Explanation: The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).
 ------------------------------
 """
 
-# Original solution passes 29 / 99 cases:
+# Final solution beats 94% in runtime:
 class Solution(object):
     def threeSumClosest(self, nums, target):
         nums.sort()
         closest = float("inf")
+        ans = 0
 
         for i in range(len(nums)-2):
             start = i + 1
@@ -26,10 +27,12 @@ class Solution(object):
                 diff = abs(s - target)
                 if diff < closest:
                     closest = diff
+                    ans = s
                 if s < target:
                     start = start+1
                 elif s > target:
                     end = end-1
                 else: 
                     return s
-        return closest
+        return ans
+Console
