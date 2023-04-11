@@ -24,16 +24,27 @@ C can be placed before D (500) and M (1000) to make 400 and 900.
 Given an integer, convert it to a roman nume
 """
 
-# My initial solution only passes half the test cases because it does not account for the special cases above between 4 and 9:
+# My initial solution only beats 5% runtime, need faster solution: 
 class Solution(object):
     def intToRoman(self, num):
-        roman_numerals = {"M":1000, "D":500,
-        "C":100, "L":50, "X":10,"V":5,"I":1}
+        roman_numerals = [
+            ('M', 1000),
+            ('CM', 900),
+            ('D', 500),
+            ('CD', 400),
+            ('C', 100),
+            ('XC', 90),
+            ('L', 50),
+            ('XL', 40),
+            ('X', 10),
+            ('IX', 9),
+            ('V', 5),
+            ('IV', 4),
+            ('I', 1)
+        ]
         
-        sort_dic=sorted(roman_numerals.items(), key=lambda x: x[1], reverse=True) 
         romans=""
-
-        for roman, n in sort_dic:
+        for roman, n in roman_numerals:
             print(roman, n)
             r = num // n
             if r > 0:
