@@ -24,7 +24,7 @@ C can be placed before D (500) and M (1000) to make 400 and 900.
 Given an integer, convert it to a roman nume
 """
 
-# My initial solution only beats 5% runtime, need faster solution: 
+# Solution that beats 98% runtime:
 class Solution(object):
     def intToRoman(self, num):
         roman_numerals = [
@@ -45,7 +45,7 @@ class Solution(object):
         
         romans=""
         for roman, n in roman_numerals:
-            print(roman, n)
+            #print(roman, n)
             r = num // n
             if r > 0:
                 string = r*roman
