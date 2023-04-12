@@ -10,7 +10,10 @@ Input: digits = "23"
 Output: ["ad","ae","af","bd","be","bf","cd","ce","cf"]
 """
 
-# Initial solution passes almost half the test cases but does not flatten the list depending on number of :
+
+
+# Initial solution passes almost half the test cases but does not flatten the list depending on number of digits.
+# This method I realized does not dynamically account for number of digits (which makes the combos larger).
 import itertools
 class Solution(object):
     def letterCombinations(self, digits):
