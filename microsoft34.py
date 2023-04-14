@@ -14,6 +14,25 @@ Input: nums = [5,7,7,8,8,10], target = 6
 Output: [-1,-1]
 """
 
+# Final solution beats 82% runtime:
+class Solution(object):
+    def searchRange(self, nums, target):
+        if target not in nums:
+            return [-1, -1]
+        else:
+            nums.append('dummy') #add a fake value at end to avoid index errors on rare occasion
+            start = nums.index(target) # since list is sorted numbers prior no need to check
+            endList = [start] #need list to find the max index
+            end = start # track end index
+            while nums[end] == target and end<len(nums)-1:
+                endList.append(end)
+                end=end+1
+
+            stop = max(endList)
+            return[start, stop] 
+
+
+
 # My initial draft 75 / 88 testcases passed:
 class Solution(object):
     def searchRange(self, nums, target):
