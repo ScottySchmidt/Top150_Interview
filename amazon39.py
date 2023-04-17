@@ -16,6 +16,28 @@ Explanation:
 These are the only two combinations.
 """
 
+
+# Correct solution beats 6% runtime, needs improvement:
+class Solution(object):
+    def combinationSum(self, candidates, target):  
+        ans = []
+
+        def search(cur, cur_sum):
+            if cur_sum == target:
+                cur.sort()
+                if cur not in ans:
+                    ans.append(cur)
+            elif cur_sum > target:
+                return
+            for i in range(len(candidates)):
+                L = cur + [candidates[i]]
+                # print(L)
+                search(L, cur_sum+candidates[i])
+        search([],0)
+        return ans 
+
+
+
 # First draft passes 27 / 160 testcases:
 class Solution(object):
     def combinationSum(self, candidates, target):        
