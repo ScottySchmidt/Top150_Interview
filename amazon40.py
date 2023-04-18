@@ -16,7 +16,7 @@ Output:
 ]
 """
 
-# 53 / 176 testcases passed
+# 124 / 176 testcases passed, runtime error:
 class Solution(object):
     def combinationSum2(self, candidates, target):
         candidates.sort()
@@ -28,6 +28,6 @@ class Solution(object):
         stuff = candidates
         for L in range(len(stuff) + 1):
             for subset in itertools.combinations(stuff, L):
-                if sum(subset) == target:
+                if sum(subset) == target and subset not in ans:
                     ans.append(subset)
         return ans
