@@ -16,13 +16,35 @@ Output:
 ]
 """
 
+# 20 / 176 testcases passed
+def combinationSum2(self, candidates, target):
+    candidates.sort()
+    ans=[]
+    def new(cur, start, target):
+        if target==0:     
+            copy = cur[:] # [:] is same as list.copy() in python 3.8
+            copy.sort()
+            if copy not in ans:
+                ans.append(copy)  
+        if target <= 0:
+            return
+        n=len(candidates)
+        for i in range(start, n):
+            num = candidates[i]
+            cur.append(num)
+            new(cur, start+1, target-num)
+            cur.pop()
+    new([], 0, target)
+    return ans 
+
+
+
 # 124 / 176 testcases passed, runtime error:
 class Solution(object):
     def combinationSum2(self, candidates, target):
         candidates.sort()
         
         import itertools
-
         ans = []
 
         stuff = candidates
