@@ -13,6 +13,30 @@ In this case, 6 units of rain water (blue section) are being trapped.
 # My current solution passes 318/322 solutions, but uses too much memory for complicated arrays:
 class Solution(object):
     def trap(self, height):
+        n=len(height)
+
+        maxLeftList=[]
+        maxRightList=[]
+        for l in range(n):
+            maxR=max(height[l:n])
+            maxRightList.append(maxR)
+
+        for r in range(1, n+1):
+            leftR = max(height[0:r])
+            maxLeftList.append(leftR)
+
+        total = 0
+        for i in range(n):
+            less=min(maxLeftList[i], maxRightList[i])
+            water=less-height[i]
+            if water>0:
+                total=total+water
+        return total
+
+
+# Original draft 318/322 solutions, but uses too much memory for complicated arrays:
+class Solution(object):
+    def trap(self, height):
         r=len(height)
 
         rightsMax=[]
