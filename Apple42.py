@@ -10,6 +10,38 @@ Explanation: The above elevation map (black section) is represented by array [0,
 In this case, 6 units of rain water (blue section) are being trapped.
 """
 
+# Fast runtime but only 51 / 322 testcases passed
+class Solution(object):
+    def trap(self, height):
+        n=len(height)
+
+        maxLeftList=[]
+        maxRightList=[]
+
+        curRightMax = -1
+        curLeftMax = -1
+        for l in range(n):
+            maxR=max(height[l], curRightMax)
+            curRightMax=maxR
+            maxRightList.append(maxR)
+
+        for r in range(n-1, -1, -1):
+            leftR = max(height[r], curLeftMax)
+            curLeftMax = leftR
+            maxLeftList.append(leftR)
+
+        print(maxLeftList)
+        print(maxRightList)
+
+        total = 0
+        for i in range(n):
+            less=min(maxLeftList[i], maxRightList[i])
+            water=less-height[i]
+            if water>0:
+                total=total+water
+        return total
+
+
 # My current solution passes 318/322 solutions, but uses too much memory for complicated arrays:
 class Solution(object):
     def trap(self, height):
