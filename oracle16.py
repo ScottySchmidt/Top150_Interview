@@ -10,31 +10,25 @@ Example 2:
 
 Input: head = [1], n = 1
 Output: []
-
-This problem looks easier than it is and more datastructure practice is needed!
 """
-# Definition for singly-linked list.
+
+# This problem looks easier than it is and more datastructure practice is needed!
 class ListNode(object):
     def __init__(self, val=0, next=None):
         self.val = val
         self.next = next
 class Solution(object):
     def removeNthFromEnd(self, head, n):
-        # Find size of linkedList:
-        size = 0
-        temp = head
-        while temp:
-            temp=temp.next
-            size=size+1
-        
-        # In the event we have to remove first:
-        if n==size:
-            return head.next
-        
-        # Loop through and skip "Nth" end of list
-        temp = head
-        num = size-n-1  # 5 - 2 -1 
-        for i in range(num):
-            temp=temp.next
-        temp.next=temp.next.next # "Skips" the nth node in list
-        return head #return the linkedList
+        slow = head
+        fast = head
+
+        for _ in range(n):
+            fast=fast.next # fast gets a Nth head start.
+        if not fast:
+            return head.next # In event there is no more fast since we did not use a dummy at beginning
+
+        while fast.next:
+            fast=fast.next
+            slow=slow.next
+        slow.next=slow.next.next  # the n value gets deleted because it eseentially gets skipped
+        return head # the ListNode has changed so we can return head. This is the most confusing part, in my opinion.
