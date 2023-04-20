@@ -10,7 +10,7 @@ Explanation: The above elevation map (black section) is represented by array [0,
 In this case, 6 units of rain water (blue section) are being trapped.
 """
 
-# Fast runtime but only 51 / 322 testcases passed
+# Fast runtime but only 122 / 322 testcases passed
 class Solution(object):
     def trap(self, height):
         n=len(height)
@@ -30,17 +30,16 @@ class Solution(object):
             curLeftMax = leftR
             maxLeftList.append(leftR)
 
-        print(maxLeftList)
-        print(maxRightList)
-
+        #print(maxLeftList)
+        #print(maxRightList)
         total = 0
-        for i in range(n):
+        for i in range(1, n-1): #first and last is always 0
             less=min(maxLeftList[i], maxRightList[i])
             water=less-height[i]
+            
             if water>0:
                 total=total+water
         return total
-
 
 # My current solution passes 318/322 solutions, but uses too much memory for complicated arrays:
 class Solution(object):
