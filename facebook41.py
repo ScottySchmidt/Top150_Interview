@@ -11,7 +11,7 @@ Output: 3
 Explanation: The numbers in the range [1,2] are all in the array.
 """
 
-# Solution Beats 62%:
+# Solution Beats 62% but not in log(0) consant time after some thinking:
 class Solution:
     def firstMissingPositive(self, nums):
         nums.sort()
@@ -19,13 +19,4 @@ class Solution:
 
         for i in range(1, len(nums)+2):
             if i not in nums:
-                return i
-
-# This solution runs into memory error, so how do we make this into O(n) time and uses constant extra space?
-class Solution:
-    def firstMissingPositive(self, nums):
-        nums.sort()
-
-        for i in range(1, len(nums)+2):
-            if i not in nums:
-                return i
+                return 1
