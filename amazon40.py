@@ -16,6 +16,34 @@ Output:
 ]
 """
 
+# Final Accepted Solution:n
+class Solution(object):
+    def combinationSum2(self, candidates, target):
+        ans = []
+        candidates.sort()
+        n=len(candidates)
+
+        def search(curList, start, target):
+            if target<0:
+                return # no longer need to search
+            if target==0:
+                ans.append(curList[:]) # You must append a COPY of the object 
+                return
+    
+            for i in range(start, n):
+                num = candidates[i]
+                if num==candidates[i-1] and i!=start:
+                    continue # this gets rid of duplicate values does not create a second tree with same numbers
+                
+                curList.append(num)
+                search(curList,i+1, target-num) # Check new list with new num, with one more start index, with target lessened
+                curList.pop()  # go back to original list for rest of loop 
+        
+        search([], 0, target)
+        return ans
+
+
+
 # 20 / 176 testcases passed
 def combinationSum2(self, candidates, target):
     candidates.sort()
