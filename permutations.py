@@ -9,7 +9,7 @@ Input: nums = [1,2,3]
 Output: [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
 """
 
-# backtrack method, this is the not "cheating" way to solve this problem like below:
+# Beats 95% using backtrack method:
 class Solution(object):
     def permute(self, nums):
         rst = []
