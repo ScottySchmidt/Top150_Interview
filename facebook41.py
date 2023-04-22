@@ -10,6 +10,23 @@ Output: 3
 Explanation: The numbers in the range [1,2] are all in the array.
 """
 
+# Final Accepted Solution with 45% runtime:
+class Solution:
+    def firstMissingPositive(self, nums):
+        nums.sort()
+
+        i=1
+        for n in nums:
+            print(n, " in sett")
+            if n < i:
+                continue
+            elif (n != i):
+                return i
+            else:
+                i=i+1
+                print(i, " new i")
+        return i
+
 # O(n) time complexity passes 171 / 175 testcases passed
 # This solution struggling with lists such as [1, 1000] returns 1 not 2?
 class Solution:
