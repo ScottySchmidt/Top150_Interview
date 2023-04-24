@@ -11,7 +11,7 @@ Output:
  [2,1,1]]
 """
 
-# To beter understand see output at very end:
+# To beter understand see output comments at very end:
 class Solution(object):
     def permuteUnique(self, nums):
         res = [] # final answer
