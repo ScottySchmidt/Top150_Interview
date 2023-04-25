@@ -46,7 +46,7 @@ class Solution(object):
         def checkBox(board):
             for r in (0, 3, 6):
                 for c in (0, 3, 6):
-                  box = [board[i][j] for j in range(c, c+3) for i in range(r, r+3)] # ChatGPT helped me with this complex line
+                  box = [board[i][j] for j in range(c, c+3) for i in range(r, r+3)] # ChatGPT helped me with this complex line, I need futher thinking
                   print(box)
                   if isValid(box) is False:
                       return False
