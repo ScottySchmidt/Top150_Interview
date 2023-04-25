@@ -32,7 +32,9 @@ class Solution(object):
                         end = end -1
                     # Found a quad:
                     else:
-                        quads.add((nums[i], nums[j], nums[start], nums[end]))     
+                        quads.add((nums[i], nums[j], nums[start], nums[end]))  # add quad to unique set
+                        
+                        # need new star and end num:
                         end=end-1
                         start=start+1
         return quads
