@@ -14,6 +14,9 @@ Only the filled cells need to be validated according to the mentioned rules.
 # A readable solution with average runTime:
 class Solution(object):
     def isValidSudoku(self, board):
+        
+        # Take a list, compare set of nums to list. 
+        # If set and list same length, then return True. All numbers are unique.
         def isValid(lst):
             numsList=[]
             for l in lst:
@@ -26,7 +29,8 @@ class Solution(object):
             else:
                  #print(numsList, " false found dup", set(numsList))
                  return False
-        
+            
+        # Check each row:
         def checkRows(board):
             for row in board:
                 #print(row, " ", type(row))
@@ -34,7 +38,8 @@ class Solution(object):
                     # print(row, " row found error", type(row))
                     return False
             return True
-
+        
+        # Check each column:
         def checkCols(board):
             for n in range(9):
                 col = [c[n] for c in board]
@@ -42,7 +47,8 @@ class Solution(object):
                     #print(col, n,"  col found error")
                     return False
             return True
-
+        
+        # Check the 3 by 3 square:
         def checkBox(board):
             for r in (0, 3, 6):
                 for c in (0, 3, 6):
