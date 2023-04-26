@@ -21,31 +21,31 @@ class Solution(object):
         while left <= right and top <= end:
             # Create first row:
             print("Going Right:")
-            for i in range(left, right):
-                matrix[top][i]=count
+            for row in range(left, right):
+                matrix[top][row]=count
                 count=count+1
                 print(count)
             top=top+1 # top row complete
             
             # Create last column:
             print("Going Down:")
-            for i in range(top, end):
+            for c in range(top, end):
                 print(count)
-                matrix[i][right-1]=count
+                matrix[c][right-1]=count
                 count=count+1
             right=right-1 # right col complete
 
             print("Going Left:")
-            for i in range(right, left, -1):
+            for row in range(right, left, -1):
                 print(count)
-                matrix[end-1][i]=count
+                matrix[end-1][row]=count
                 count=count+1
             end=end-1 # bottom row complete
             
             print("Going Up:")
-            for i in range(end, top, -1):
+            for c in range(end, top, -1):
                 print(count)
-                matrix[i][left]=count
+                matrix[c][left]=count
                 count=count+1
             left=left+1
             
