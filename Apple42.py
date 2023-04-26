@@ -10,6 +10,34 @@ Explanation: The above elevation map (black section) is represented by array [0,
 In this case, 6 units of rain water (blue section) are being trapped.
 """
 
+# Final Solution using two points left and right:
+class Solution:
+    def trap(self, height):
+        n = len(height)
+        if n < 3:
+            return 0
+        water = 0
+        left = 1 
+        right = n-2
+        left_max = height[0]
+        right_max = height[n-1]
+
+        while left <= right:
+            if left_max < right_max:
+                left_max = max(left_max, height[left]) 
+                amount=left_max-height[left]
+                if amount > 0:
+                    water += amount
+                left=left+1 
+            else:
+                right_max = max(right_max, height[right])
+                amount = right_max-height[right]
+                if amount > 0:
+                    water += amount
+                right=right-1
+        return water
+
+
 # Fast runtime but only 122 / 322 testcases passed
 class Solution(object):
     def trap(self, height):
