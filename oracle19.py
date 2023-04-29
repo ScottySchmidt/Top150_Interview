@@ -12,7 +12,7 @@ Input: head = [1], n = 1
 Output: []
 """
 
-# This problem looks easier than it is and more datastructure practice is needed!
+# The challenging part is doing if not fast: which is needed if the ListNode size is 2
 class ListNode(object):
     def __init__(self, val=0, next=None):
         self.val = val
@@ -24,7 +24,7 @@ class Solution(object):
 
         for _ in range(n):
             fast=fast.next # fast gets a Nth head start.
-        if not fast:
+        if not fast: # This will solve if ListNode size is 2
             return head.next # In event there is no more fast since we did not use a dummy at beginning
 
         while fast.next:
