@@ -28,8 +28,8 @@ Output: 5, nums = [1,1,2,2,3,_]
 Explanation: Your function should return k = 5, with the first five elements of nums being 1, 1, 2, 2 and 3 respectively.
 It does not matter what you leave beyond the returned k (hence they are underscores).
 """
-
-# Two pointers solution:
+# Clean two pointers accepted solution, need to reattempt this problem. 
+# Also, this problem checks index 1 to 3 and not 1, 2, and 3? Need to consider how this is accepted.
 class Solution(object):
     def removeDuplicates(self, nums):
       if len(nums) < 2:
