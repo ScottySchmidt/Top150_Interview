@@ -14,7 +14,7 @@ Explanation: Intervals [1,4] and [4,5] are considered overlapping.
 """
 
 
-# First attempt only passes occasionally but I have the right thinking:
+# First attempt passes 10% of testcases:
 class Solution(object):
     def merge(self, intervals):
         n = len(intervals)
@@ -28,7 +28,7 @@ class Solution(object):
             l=r-1
             if intervals[l][1] >= intervals[r][0]:
                 one=intervals[l][0]
-                two=intervals[r][1]
+                two=max(intervals[r][1], intervals[l][1])
                 print("overlap: newList ", one, two)
                 mergeList.append([one, two])
                 r=r+2
