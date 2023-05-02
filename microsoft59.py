@@ -8,6 +8,23 @@ Input: n = 3
 Output: [[1,2,3],[8,9,4],[7,6,5]]
 """
 
+# Working solution going to reattempt from memory soon:
+class Solution(object):
+    def merge(self, intervals):
+        n = len(intervals)
+        if n <= 1: return intervals
+        intervals=sorted(intervals)
+        res = [intervals[0]] #start with first list
+
+        for start, end in intervals[1:]: # first already stoed
+            lastEnd = res[-1][1] #get y of last list
+            #print(start, end, lastEnd)
+            if lastEnd >= start: 
+                res[-1][1] = max(lastEnd, end) # store new last end
+            else:
+                res.append([start, end]) # store list as normal
+        return res
+
 # Original draft, works but messes up number 5:
 class Solution(object):
     def generateMatrix(self, n):
