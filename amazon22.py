@@ -24,25 +24,22 @@ class Solution(object):
         def backtrack(open, close): 
             if open == close == n:
                 s="".join(stack)
-                print(s, " answer")
+                #print(s, " answer")
                 res.append(s)
                 return 
 
             if open < n:
                 stack.append("(")
                 backtrack(open+1, close) 
-                '''
-                backtrack will send ((( until n is 3
-                then continue to close and make )))
-                '''
-                stack.pop()
-                print(stack, " popped")
+                #backtrack will send ((( until n is 3 then continue to close and make )))
+                stack.pop()  #will delete first ( then add ) then more ((
+                #print(stack, " popped")
                 
             if close < open:
                 stack.append(")")
                 backtrack(open, close+1)
                 stack.pop()
-                print(stack, " popped")
+                #print(stack, " popped")
     
         backtrack(0, 0)
         return res
