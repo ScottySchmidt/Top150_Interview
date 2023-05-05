@@ -32,7 +32,7 @@ twitter.getNewsFeed(1);  // User 1's news feed should return a list with 1 tweet
 class Twitter(object):
     def __init__(self):
         self.tweets=[]
-        self.followers = collections.defaultdict(set)
+        self.followers = collections.defaultdict(set) #default dic is more simple no need to check if user already exists
 
     def postTweet(self, userId, tweetId):
         self.tweets.append([userId, tweetId])
