@@ -38,19 +38,16 @@ class Twitter(object):
         self.tweets.append([userId, tweetId])
         
     def getNewsFeed(self, userId):
-        """
-        :type userId: int
-        :rtype: List[int]
-        """
-        n = len(self.tweets)-1
-        ans=[] #:rtype: List[int]
+        n = len(self.tweets)-1 
+        ans=[]  #:rtype: List[int]
+        # if n is less than 0 ran out of tweets. 
         while n >= 0 and len(ans) < 10:
             p = self.tweets[n]
             uid = p[0]
             tid = p[1]
             if uid in self.followers[userId] or uid==userId:
                 ans.append(tid)
-            n=n-1
+            n=n-1 # check next 'last' tweet
         return ans
             
     def follow(self, followerId, followeeId):
