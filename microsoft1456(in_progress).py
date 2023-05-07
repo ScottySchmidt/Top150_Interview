@@ -19,7 +19,7 @@ Output: 2
 Explanation: "lee", "eet" and "ode" contain 2 vowels.
 """
 
-# First Attempt, Time Limit Exceeded:
+# First Attempt, In Progress:
 class Solution(object):
     def maxVowels(self, s, k):
         n = len(s)
@@ -35,4 +35,6 @@ class Solution(object):
                     count=count+1
             if count < max_count:
                 max_count=count
+            beg+=1
+            end+=1
         return max_count
