@@ -19,7 +19,7 @@ Output: 2
 Explanation: "lee", "eet" and "ode" contain 2 vowels.
 """
 
-# Original Solution 97 / 106 testcases passed
+# RunTime, Original Solution 99 / 106 testcases passed
 class Solution(object):
     def maxVowels(self, s, k):
         n = len(s)
