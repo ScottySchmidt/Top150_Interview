@@ -19,11 +19,13 @@ Output: 2
 Explanation: "lee", "eet" and "ode" contain 2 vowels.
 """
 
-# Accepted Solution Beats 78%: 
+
+# Accepted Solution Beats 80%: 
+# Notice the difference between this one and the one below.
+# We only need to check the newest and oldest letter in each substring to get a fast runtime.
 class Solution(object):
     def maxVowels(self, s, k):
         n = len(s)
-        end = k
         vowels=frozenset('aeiou')
         count = max_count= sum(s[i] in vowels for i in range(k))
         for i in range(k, n):
