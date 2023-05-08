@@ -13,7 +13,23 @@ Input: nums = [0]
 Output: [[],[0]]
 """
 
+# Accepted Solution beats 45% runtime:
+class Solution(object):
+    def subsetsWithDup(self, nums):
+        nums.sort()
+        res = []
+        n = len(nums)
 
+        def backtrack(start, curList):
+            res.append(curList[:])
+            for i in range(start, n):
+                if i> start and nums[i]==nums[i-1]:
+                    continue
+                curList.append(nums[i])
+                backtrack(i+1, curList)
+                curList.pop()
+        backtrack(0, [])
+        return res
 
 """
 Passes 3/20 Test Cases.
