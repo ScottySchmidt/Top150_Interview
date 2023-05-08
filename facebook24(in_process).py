@@ -9,8 +9,7 @@ Input: head = [1,2,3,4]
 Output: [2,1,4,3]
 """
 
-# I am currently working on understanding this complex data structure problem through notes and comments:
-# I would need more practice to solve this problem from memory this is a work in progress:
+# Work in progress have detailed commments:
 class ListNode(object):
     def __init__(self, val=0, next=None):
         self.val = val
