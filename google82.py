@@ -9,10 +9,10 @@ Input: head = [1,2,3,3,4,4,5]
 Output: [1,2,5]
 """
 
-#  Wrote detailed comments how to solve this problem. Attempting a solution from memory soon:
+#  Final Accepted Solution. I believe I can solve this problem from memory will reattempt in a month.
 class Solution(object):
     def deleteDuplicates(self, head):
-        dummy = ListNode(0, head) # add a 0 to dummy node 
+        dummy = ListNode(-1, head) # add a 0 to dummy node 
         cur = head # curr node
         prev = dummy # prev node since has 0 at beg
         while cur and cur.next:  # check two cur nodes at a time
