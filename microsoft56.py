@@ -13,8 +13,26 @@ Output: [[1,5]]
 Explanation: Intervals [1,4] and [4,5] are considered overlapping.
 """
 
+# Final Accepted Solution:
+class Solution(object):
+    def merge(self, intervals):
+        n = len(intervals)
+        if n == 1: 
+            return intervals
 
-# First draft passes 10% of testcases:
+        intervals = sorted(intervals)
+        output = [intervals[0]] # start with first 
+
+        for start, end in intervals[1:]: # check the next after first
+            lastEnd = output[-1][1] # get last in num
+            if start <= lastEnd: 
+                output[-1][1] = max(lastEnd, end) # update prev interval bigger of two ends
+            else:
+                output.append([start, end])
+        return output
+    
+     
+# First draft passes 10% of testcases. 
 class Solution(object):
     def merge(self, intervals):
         n = len(intervals)
