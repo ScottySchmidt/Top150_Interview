@@ -9,6 +9,18 @@ Input: head = [1,2,3,4]
 Output: [2,1,4,3]
 """
 
+# Evenually I found this simple solution:
+class Solution:
+    def swapPairs(self, head):
+        dummy = pre = ListNode(0)
+        pre.next = head
+        while pre.next and pre.next.next:
+            a = pre.next
+            b = a.next
+            pre.next, a.next, b.next = b, b.next, a
+            pre = a
+        return dummy.next
+
 # Work in progress have detailed commments:
 class ListNode(object):
     def __init__(self, val=0, next=None):
