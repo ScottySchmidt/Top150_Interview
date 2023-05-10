@@ -24,7 +24,8 @@ class Solution(object):
 
         for _ in range(n):
             fast=fast.next # fast gets a Nth head start.
-        if not fast: # This will solve if ListNode size is 2
+            
+        if not fast: # This will solve if ListNode size is 2 or n is size of fast list
             return head.next # In event there is no more fast since we did not use a dummy at beginning
 
         while fast.next:
