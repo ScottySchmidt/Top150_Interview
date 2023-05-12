@@ -14,7 +14,7 @@ Input: matrix = [[1,4,7,11,15],[2,5,8,12,19],[3,6,9,16,22],[10,13,14,17,24],[18,
 Output: false
 """
 
-# Beats 21% runtime, need faster solution?
+# Beats 50% runtime, need faster solution?
 class Solution(object):
     def searchMatrix(self, matrix, target):
         """
@@ -23,7 +23,6 @@ class Solution(object):
         :rtype: bool
         """
         m = len(matrix)
-        n = len(matrix[0])
         for i in range(m):
             if target in matrix[i]:
                 return True
