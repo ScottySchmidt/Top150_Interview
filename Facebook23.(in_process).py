@@ -12,6 +12,7 @@ Merge all the linked-lists into one sorted linked-list and return it.
 ------------------------------------
 """
 
+# Work In Progress:
 class Solution(object):
     def mergeKLists(self, lists):
         v=[] 
@@ -20,7 +21,7 @@ class Solution(object):
             print(x)
             while x:  # keep getting next item in list
                 v+=[x.val] # add val to list
-                x=x.next. # next item
+                x=x.next # next item
         v=sorted(v,reverse=True) # backwards list for now
         print(v, " v")
         ans=None
