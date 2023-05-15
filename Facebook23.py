@@ -31,20 +31,20 @@ Output: []
 #         self.next = next
 """
 
-# Work In Progress:
+# Accepted Solution with 85% runtime beat, Work In Progress (will try to replicate again in near future):
 class Solution(object):
     def mergeKLists(self, lists):
         v=[] 
         for lst in lists:
             cur=lst # temp list
-            print(cur)
+            # print(cur)
             while cur:  # keep getting next item in list
-                v+=[cur.val] # add val to list
+                v+=[cur.val] # add val to list as a seperate num. Without brackets v would become a total sum.
                 cur=cur.next # next item
         v=sorted(v,reverse=True) # backwards list for now
-        print(v, " v")
+        # print(v, " v")
         ans=None
         for i in v:
             ans=ListNode(i,ans) # i is value with next node ans
-        return ans
+        return ans # return as new linkedList Node
  
