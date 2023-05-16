@@ -12,7 +12,7 @@ Input: matrix = [[1,2,3,4],[5,6,7,8],[9,10,11,12]]
 Output: [1,2,3,4,8,12,11,10,9,5,6,7]
 """
 
-# 12/25 Test Cases Passed:
+# Soluton beats 84% runtime:
 class Solution(object):
     def spiralOrder(self, matrix):
         print("matrix: " ,matrix)
@@ -48,4 +48,3 @@ class Solution(object):
                     res.append(matrix[i][left])
                 left+=1 # most left row completed
             return res
-                
