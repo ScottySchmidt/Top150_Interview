@@ -15,7 +15,8 @@ Output: 0
 Explanation: The result cannot be 2, because [-2,-1] is not a subarray.
 """
 
-# Accepted Solution beats 24%:
+# Accepted Final Solution.
+# The trick is to track the current min and current max because on a negative number they swap.
 class Solution(object):
     def maxProduct(self, nums):
         n=len(nums)
