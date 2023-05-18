@@ -6,8 +6,8 @@ Prior to being passed to your function, nums is possibly rotated at an unknown p
 Given the array nums after the possible rotation and an integer target, return the index of target if it is in nums, or -1 if it is not in nums.
 You must write an algorithm with O(log n) runtime complexity.
 """
-
-# My original solution from months ago does not have a 0 (log n runtime):
+#Binary Search needed to have a log n runtime.
+#My original "accepted" solution does not have a 0 (log n runtime):
 class Solution(object):
     def search(self, nums, target):
         if target not in nums:
