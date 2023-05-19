@@ -42,8 +42,9 @@ class Solution(object):
                nums[pointer] = nums[i] 
           # else: If one is equal to three nums and pointer does not update
       return pointer+1 # add 1since index started at 0 not 1
-""" This solution starts at changing index 3 first without changing first two index.
+""" 
+This solution starts at changing index 3 first without changing first two index.
 This looks confusing at first, but when you think about it the first two index will never need to be chnaged
 since it cannot be a triple dup.
-""
+"""
     
