@@ -18,6 +18,27 @@ Example 3:
 Input: target = 11, nums = [1,1,1,1,1,1,1,1]
 Output: 0
 """
+# Final Accepted Solution using sliding window with start/end pointers:
+class Solution(object):
+    def minSubArrayLen(self, target, nums):
+        n = len(nums)
+        total = 0
+        start = 0
+        minSubArr = 987654321 # need a higher original number
+        for end in range(n):
+            total += nums[end]
+            while total >= target:
+                length = end-start+1 # length of subarr
+                minSubArr = min(minSubArr, length) # store new min         
+                # Nums Start is now plus one index:
+                total -= nums[start] 
+                start +=1
+        # if minSubArr has not changed, then nothing was found:
+        if minSubArr==987654321:
+            return 0
+        else:
+            return minSubArr
+
 
 # Passes 7/20 test cases:
 class Solution(object):
