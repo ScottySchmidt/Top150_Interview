@@ -19,6 +19,23 @@ Explanation: The answer is "wke", with the length of 3.
 Notice that the answer must be a substring, "pwke" is a subsequence and not a substring.
 """
 
+# 879 / 987 testcases passed
+class Solution(object):
+    def lengthOfLongestSubstring(self, s):
+        beg = 0
+        end = 0
+        max_len = 0
+        for c in s:
+            word = s[beg:end]
+            if c in word:
+                cur_len = end-beg
+                beg = beg+word.index(c)+1
+                max_len = max(max_len, cur_len)
+            end += 1
+        return max_len
+
+
+
 # Passes 91 / 987 testcases passed
 class Solution(object):
     def lengthOfLongestSubstring(self, s):
