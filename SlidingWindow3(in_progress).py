@@ -19,7 +19,8 @@ Explanation: The answer is "wke", with the length of 3.
 Notice that the answer must be a substring, "pwke" is a subsequence and not a substring.
 """
 
-# Final Accepted Solution with 77% runtime using sliding windows with 2 pointers:
+# Final Accepted Solution with 77% runtime using sliding windows with 2 pointers
+# Runtime is log(n) since runs through s only once
 class Solution(object):
     def lengthOfLongestSubstring(self, s):
         beg = 0
@@ -29,16 +30,17 @@ class Solution(object):
             word = s[beg:end]
             if c in word:
                 cur_len = end-beg
-                beg = beg+word.index(c)+1
-                max_len = max(max_len, cur_len)
+                beg = beg+word.index(c)+1  #Start at next index of first occurance of c
+                max_len = max(max_len, cur_len) 
             end += 1
-        if max_len < end-beg: # This happens when there is for instance only one char in s
+        if max_len < end-beg: #This happens when there is for instance only one char in s
             return end-beg 
         else:
             return max_len
 
 
 # Attempt 879 / 987 testcases passed
+# This does not account for when length of s is one. It will incorrectly return 0 when should return 1. 
 class Solution(object):
     def lengthOfLongestSubstring(self, s):
         beg = 0
@@ -48,7 +50,7 @@ class Solution(object):
             word = s[beg:end]
             if c in word:
                 cur_len = end-beg
-                beg = beg+word.index(c)+1
+                beg = beg+word.index(c)+1 
                 max_len = max(max_len, cur_len)
             end += 1
         return max_len
