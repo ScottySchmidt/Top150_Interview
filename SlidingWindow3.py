@@ -39,7 +39,7 @@ class Solution(object):
             return max_len
 
 
-# Attempt 879 / 987 testcases passed
+# Incorrect Second Attempt 879 / 987 testcases passed
 # This does not account for when length of s is one. It will incorrectly return 0 when should return 1. 
 class Solution(object):
     def lengthOfLongestSubstring(self, s):
@@ -57,7 +57,7 @@ class Solution(object):
 
 
 
-# Passes 91 / 987 testcases passed
+# Incorrect First draft Passes 91 / 987 testcases passed
 class Solution(object):
     def lengthOfLongestSubstring(self, s):
         substring = ""
