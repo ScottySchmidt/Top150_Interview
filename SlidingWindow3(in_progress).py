@@ -19,7 +19,8 @@ Explanation: The answer is "wke", with the length of 3.
 Notice that the answer must be a substring, "pwke" is a subsequence and not a substring.
 """
 
-# Final Accepted Solution with 77% runtime using sliding windows with 2 pointers:
+# Final Accepted Solution with 77% runtime using sliding windows with 2 pointers.
+# Runtime complexity of O(n) since only runs through input s once.
 class Solution(object):
     def lengthOfLongestSubstring(self, s):
         beg = 0
@@ -39,6 +40,7 @@ class Solution(object):
 
 
 # Attempt 879 / 987 testcases passed
+# This attempt does not check for strings with only one char, it will return 0 instead of 1. 
 class Solution(object):
     def lengthOfLongestSubstring(self, s):
         beg = 0
