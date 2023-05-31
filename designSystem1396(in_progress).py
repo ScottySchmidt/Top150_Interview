@@ -22,13 +22,21 @@ If a customer checks in at time t1 then checks out at time t2, then t1 < t2. All
 
 class UndergroundSystem(object):
     def __init__(self):
-        self.customers = defaultdict(tuple)
+        self.user = collections.defaultdict(list)
+        self.dest = collections.defaultdict(list)
         
     def checkIn(self, id, stationName, t):
-        self.customers[id] = [stationName, t]
+        self.user[id] = [stationName, t]
         
     def checkOut(self, id, stationName, t):
-       
-    def getAverageTime(self, startStation, endStation):
+        start_station, prev_time = self.user[id]
+        self.dest[(start_station, stationName)].append(t-prev_time)
 
-      
+    def getAverageTime(self, startStation, endStation):
+        pass
+        
+# Your UndergroundSystem object will be instantiated and called as such:
+# obj = UndergroundSystem()
+# obj.checkIn(id,stationName,t)
+# obj.checkOut(id,stationName,t)
+# param_3 = obj.getAverageTime(startStation,endStation)
