@@ -20,6 +20,7 @@ You may assume all calls to the checkIn and checkOut methods are consistent.
 If a customer checks in at time t1 then checks out at time t2, then t1 < t2. All events happen in chronological order.
 """
 
+# Accepted Solution (need to try from memory):
 class UndergroundSystem(object):
     def __init__(self):
         self.user = collections.defaultdict(list)
@@ -33,7 +34,7 @@ class UndergroundSystem(object):
         self.dest[(start_station, stationName)].append(t-prev_time)
 
     def getAverageTime(self, startStation, endStation):
-        pass
+        return float(sum(self.dest[(startStation, endStation)]))/len(self.dest[(startStation,endStation)])
         
 # Your UndergroundSystem object will be instantiated and called as such:
 # obj = UndergroundSystem()
