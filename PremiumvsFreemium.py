@@ -5,6 +5,8 @@ Find the total number of downloads for paying and non-paying users by date. Incl
 The output should be sorted by earliest date first and contain 3 columns date, non-paying downloads, paying downloads.
 DataFrames: ms_user_dimension, ms_acc_dimension, ms_download_factsExpected Output Type: pandas.DataFrame
 '''
+
+# Initial Draft Solution Passes half of the rows correctly:
 import pandas as pd
 
 # Three Datasets:
@@ -19,4 +21,17 @@ mergeDF = pd.merge(mergeDF, df3, on="user_id")
 
 # Use Group By:
 groupDF=mergeDF.groupby(['date', 'paying_customer'])['downloads'].sum()
-groupDF.reset_index()
+
+# Three Datasets:
+df = ms_user_dimension
+df2= ms_acc_dimension
+df3= ms_download_facts
+
+# Join Datasets:
+mergeDF = pd.merge(df, df2, on="acc_id")
+mergeDF = pd.merge(mergeDF, df3, on="user_id")
+#mergeDF.head()
+
+# Use Group By:
+groupDF=mergeDF.groupby(['date', 'paying_customer']).agg({'downloads': 'sum'}).unstack() # unstack will act as a pivot
+groupDF=groupDF.reset_index().sort_values('date')
