@@ -7,9 +7,7 @@ You have been asked to calculate the percentage of orders that arrive extremely 
 Your output should include the month in the format 'YYYY-MM' and the percentage of extremely late orders as a percentage of all orders placed in that month.
 '''
 
-# In Progress:
 import pandas as pd
-
 df=delivery_orders
 
 #function to transform datetime to minutes:
@@ -22,16 +20,17 @@ df['deliver_convert'] = df['actual_delivery_time'].apply(diff_mins)
 df['Time_Mins']= df['deliver_convert']-df['order_convert']
 
 # Get year and month of order date for a groupby later on:
-df['Month'] = df['order_placed_time'].dt.month
-df['Year'] = df['order_placed_time'].dt.year
+df['date'] = df['order_placed_time'].dt.strftime('%Y-%m')
 
 # Filter dataframe:
 threshold = 20
 filter_df = df[df['Time_Mins'] > threshold]
 
-distinct_df = filter_df.groupby(['Year', 'Month'])['delivery_id'].nunique().reset_index(name='LongOrders')
+# Get Counts
+distinct_df = filter_df.groupby(['date'])['delivery_id'].nunique().reset_index(name='LongOrders')
+total_count_df = df.groupby(['date'])['delivery_id'].size().reset_index(name='total_count')
 
-total_count_df = df.groupby(['Year', 'Month'])['delivery_id'].size().reset_index(name='total_count')
-
-merge_df = pd.merge(distinct_df, total_count_df, on=['Year', 'Month'])
-merge_df.head()
+# Merge Counts to one dataframe:
+merge_df = pd.merge(distinct_df, total_count_df, on=['date'])
+merge_df['ratio'] = merge_df['LongOrders']/merge_df['total_count']
+merge_df[['date','ratio']]
