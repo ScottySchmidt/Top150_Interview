@@ -25,4 +25,13 @@ df['Time_Mins']= df['deliver_convert']-df['order_convert']
 df['Month'] = df['order_placed_time'].dt.month
 df['Year'] = df['order_placed_time'].dt.year
 
-df.head()
+# Filter dataframe:
+threshold = 20
+filter_df = df[df['Time_Mins'] > threshold]
+
+distinct_df = filter_df.groupby(['Year', 'Month'])['delivery_id'].nunique().reset_index(name='LongOrders')
+
+total_count_df = df.groupby(['Year', 'Month'])['delivery_id'].size().reset_index(name='total_count')
+
+merge_df = pd.merge(distinct_df, total_count_df, on=['Year', 'Month'])
+merge_df.head()
