@@ -14,7 +14,7 @@ df = playbook_events
 df2 = playbook_users
 
 # JOIN:
-joinDF=df.merge(df2, on='user_id', how='inner')
+joinDF=df.merge(df2, on='user_id', how='left')
 
 # Apple Data:
 appleDF = joinDF[joinDF['device'].isin(["macbook pro", "iphone 5s", "ipad air"])]
@@ -24,6 +24,6 @@ apple_count_df = appleDF.groupby('language')['user_id'].nunique().reset_index(na
 total_count_df = joinDF.groupby('language')['user_id'].nunique().reset_index(name='n_total_users')
 
 # Languages Join Together:
-finalDF=apple_count_df.merge(total_count_df, on='language', how='inner')
-finalDF=finalDF.sort_values('n_total_users', ascending=False)
+finalDF=apple_count_df.merge(total_count_df, on='language', how='outer')
+finalDF=finalDF.sort_values('n_total_users', ascending=False).fillna(0)
 finalDF
