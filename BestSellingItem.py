@@ -25,3 +25,18 @@ grouped_df = df.groupby(['month', 'stockcode', 'description'])['total'].sum().re
 # Find Max for each 
 max_totals_by_month = grouped_df.groupby(['stockcode', 'description', 'month'])['total'].max().reset_index()
 print(max_totals_by_month)
+
+
+# SQL_Server Solution:
+'''
+with month_sales as ( 
+select stockcode, description, sum(quantity*unitprice) as month_total,
+month(invoicedate) as month 
+FROM online_retail 
+GROUP BY stockcode, description, month(invoicedate)
+)
+
+SELECT month, stockcode, description, max(month_total) as max_month_total
+FROM month_sales
+GROUP BY stockcode, description, month
+'''
