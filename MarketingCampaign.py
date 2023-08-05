@@ -8,16 +8,19 @@ The marketing campaign doesn't start until one day after the initial in-app purc
 nor do we count users that over time purchase only the products they purchased on the first day.
 '''
 
-# SQL Server: 
+# SQL Server Solution Main filtered table with items need:
 with cte as (SELECT user_id, created_at,
 	LAG(created_at,1) OVER ( PARTITION BY user_id ORDER BY created_at
 	) as prev_day,
 	ROW_NUMBER() OVER (PARTITION BY user_id ORDER BY created_at) 
 	AS purchase_number
-FROM marketing_campaign)
+FROM marketing_campaign),
 
-SELECT user_id
+users_second_day as (SELECT user_id
 FROM cte
 WHERE purchase_number = 2 
 and datediff(day, created_at, prev_day) =-1
+)
+
+SELECT count(user_id) FROM users_second_day
 ;
