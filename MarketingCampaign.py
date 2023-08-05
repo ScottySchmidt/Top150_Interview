@@ -9,9 +9,15 @@ nor do we count users that over time purchase only the products they purchased o
 '''
 
 # SQL Server: 
-SELECT user_id, created_at,
-	LAG(created_at,1) OVER (
-	PARTITION BY user_id
-	ORDER BY created_at
-	) as prev_day
-FROM marketing_campaign;
+with cte as (SELECT user_id, created_at,
+	LAG(created_at,1) OVER ( PARTITION BY user_id ORDER BY created_at
+	) as prev_day,
+	ROW_NUMBER() OVER (PARTITION BY user_id ORDER BY created_at) 
+	AS purchase_number
+FROM marketing_campaign)
+
+SELECT user_id
+FROM cte
+WHERE purchase_number = 2 
+and datediff(day, created_at, prev_day) =-1
+;
