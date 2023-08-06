@@ -7,6 +7,17 @@ Find the number of users that made additional in-app purchases due to the succes
 The marketing campaign doesn't start until one day after the initial in-app purchase so users that only made one or multiple purchases on the first day do not count,
 nor do we count users that over time purchase only the products they purchased on the first day.
 '''
+# Python Solution (SQL_Server is next)
+import pandas as pd
+
+df = marketing_campaign[['created_at', 'user_id']]
+df['prev_date'] = df.groupby('user_id')['created_at'].shift(1)
+df['purchase_day_rank'] = df.groupby('user_id')['created_at'].rank()
+df['date_diff'] = (df['created_at'] - df['prev_date']).dt.days
+df_final = df[(df['date_diff'] == 1) & (df['purchase_day_rank']==2)]
+
+count = df_final.shape[0]
+print(count)
 
 # SQL Server Solution Main filtered table with items need:
 with cte as (SELECT user_id, created_at,
