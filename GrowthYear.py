@@ -27,3 +27,24 @@ unique_id_year['growth_metric'] = (unique_id_year['cur_id_count']-unique_id_year
 
 unique_id_year['growth_metric']=unique_id_year['growth_metric'].round()
 print(unique_id_year)
+
+
+# SQL Server Solution
+with cte as (select id, year(host_since) as year
+from airbnb_search_details),
+
+cte2 as (SELECT count(id) as cur_count_id, year
+FROM cte
+GROUP BY year
+),
+
+cte3 as (SELECT year, cur_count_id,
+lag(cur_count_id, 1) OVER(ORDER BY year) as prev_year_count
+FROM cte2 )
+
+SELECT year, cur_count_id, prev_year_count,
+  CASE
+           WHEN prev_year_count IS NULL OR prev_year_count = 0 THEN NULL
+           ELSE (100*(cur_count_id - prev_year_count) / prev_year_count) 
+       END AS growth_rate
+FROM cte3;
