@@ -8,26 +8,24 @@ Output the description of the item along with the amount paid.
 '''
 import pandas as pd
 
-df = online_retail[['quantity', 'description','unitprice', 'invoicedate', 'stockcode']]
+df = online_retail[['quantity', 'unitprice', 'invoicedate']]
 
-# Get Total
-df['total']= online_retail['quantity']*online_retail['unitprice']
+# New Total Column
+df['total'] = df['quantity'] * df['unitprice']
 
-# Get month:
-df['month'] = online_retail['invoicedate'].dt.month
+# Extracting the month from the invoicedate column
+df['month'] = df['invoicedate'].dt.month
 
-# Only need these columns:
-df=df[['total', 'month', 'stockcode' , 'description']]
+# Find the index of the maximum total within each month
+idx = df.groupby('month')['total'].idxmax()
 
-# GroupBy month and total:
-grouped_df = df.groupby(['month', 'stockcode', 'description'])['total'].sum().reset_index(drop=False)
+# Use the index to retrieve the entire row, including the original unitprice
+best_selling_items = df.loc[idx]
 
-# Find Max for each 
-max_totals_by_month = grouped_df.groupby(['stockcode', 'description', 'month'])['total'].max().reset_index()
-print(max_totals_by_month)
+print(best_selling_items[['month', 'unitprice', 'total']])
 
 
-# SQL_Server Solution:
+# SQL_Server and mySQL Solution:
 '''
 with month_sales as ( 
 select stockcode, description, sum(quantity*unitprice) as month_total,
