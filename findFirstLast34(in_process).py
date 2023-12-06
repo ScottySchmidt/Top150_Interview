@@ -11,7 +11,7 @@ Input: nums = [5,7,7,8,8,10], target = 8
 Output: [3,4]
 """
 
-# My initial correct solution I quickly wrote up has slow runtime. How can we make this faster?
+# My initial correct solution has slow runtime amd not O(log n) runtime complexity.. How can we make this faster?
 class Solution(object):
     def searchRange(self, nums, target):
         indexList = []
