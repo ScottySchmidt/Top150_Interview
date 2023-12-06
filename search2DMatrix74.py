@@ -15,6 +15,7 @@ Output: true
 """
 
 # Accepted Solution Beats 50% runtime which uses a method checks each row
+
 class Solution(object):
     def searchMatrix(self, matrix, target):
         """
