@@ -45,12 +45,12 @@ two_stop = two_stop[['origin_x', 'destination', 'total_cost', 'route']].rename(c
 no_stop = no_stop[['origin', 'destination', 'cost', 'route']]
 one_stop = one_stop[['origin_x', 'destination_y', 'total_cost']].rename(columns={'origin_x': 'origin', 'destination_y': 'destination', 'total_cost': 'cost'})
 
-result_df = pd.concat([no_stop, one_stop, two_stop]).drop_duplicates().reset_index(drop=True)
+three_df = pd.concat([no_stop, one_stop, two_stop]).drop_duplicates().reset_index(drop=True)
 
 # Group by 'origin' and 'destination', find the minimum cost, and keep the 'route' column
-three_df = df[df['origin'] != df['destination']].groupby(['origin', 'destination'])[['cost', 'route']].agg({'cost': 'min', 'route': 'first'}).reset_index()
+lowest_df = df[df['origin'] != df['destination']].groupby(['origin', 'destination'])[['cost', 'route']].agg({'cost': 'min', 'route': 'first'}).reset_index()
 
-return three_df
+return lowest_df
 
 ''' 
 FINAL OUTPUT WITH ARROWS:
