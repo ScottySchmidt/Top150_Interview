@@ -20,7 +20,7 @@ Explanation: Starting with nums = [3,1,3,4,3]:
 There are no more pairs that sum up to 6, hence a total of 1 operation.
 """
 
-# First Draft Passes 12/50 Test Cases:
+# Two pointer approach, first draft passes 12/50 Test Cases:
 class Solution(object):
     def maxOperations(self, nums, k):
         if not nums: return 0
