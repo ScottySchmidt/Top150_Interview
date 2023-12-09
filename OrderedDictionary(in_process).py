@@ -46,7 +46,7 @@ class LRUCache:
             # if cache list is full:
             if len(self.values)==self.capacity:
                 # last = False will delete first item which is was last used with an orderedDic
-                self.values.popitem(last=False)
+                self.values.popitem(last=False) # Remove the first in dictionary, this is least recently used.
         else:
             self.values.pop(key) #remove value
         self.values[key] = value # add value at end
