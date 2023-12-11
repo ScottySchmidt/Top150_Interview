@@ -10,9 +10,53 @@ Example 2:
 
 Input: head = [1], n = 1
 Output: []
+
+Input: head = [1,2,3,4,5], n = 2
+Output: [1,2,3,5]
+Example 2:
+
+Input: head = [1], n = 1
+Output: []
+Example 3:
+
+Input: head = [1,2], n = 1
+Output: [1]
 """
 
-# The challenging part is doing if not fast: which is needed if the ListNode size is 2
+# Time complexity of O(2N), two pass easy to understand solution:
+# Definition for singly-linked list.
+class ListNode(object):
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+class Solution(object):
+    def removeNthFromEnd(self, head, n):
+        if head is None: return None
+
+        node_size = 0
+        curr = head
+        while curr: 
+            node_size = node_size + 1
+            curr = curr.next
+
+        skip_node = node_size - n
+        #print("skip this node: ", skip_node)
+        
+        if skip_node == 0:
+            return head.next # if need to skip the 0th index then need to get all after .next
+
+        count = 0
+        while head.next:
+            count = count+1
+            if count == skip_node:
+                head.next = head.next.next
+            else:
+                head = head.next
+        return head
+
+
+
+# Two pointer solution is more complicated but time complexity of O(N): 
 class ListNode(object):
     def __init__(self, val=0, next=None):
         self.val = val
