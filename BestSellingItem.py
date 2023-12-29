@@ -22,19 +22,19 @@ idx = df.groupby('month')['total'].idxmax()
 # Use the index to retrieve the entire row, including the original unitprice
 best_selling_items = df.loc[idx]
 
-print(best_selling_items[['month', 'unitprice', 'total']])
+return best_selling_items[['month', 'unitprice', 'total']]
 
 
-# SQL_Server and mySQL Solution:
-'''
-with month_sales as ( 
-select stockcode, description, sum(quantity*unitprice) as month_total,
-month(invoicedate) as month 
-FROM online_retail 
-GROUP BY stockcode, description, month(invoicedate)
+# SQL YouTube Solution: https://www.youtube.com/watch?v=ON61CG7BvGs
+# My SQL Solution:
+with items as(SELECT month(invoicedate) as month, description, 
+sum(unitprice * quantity) as total_sales,
+dense_rank() OVER(PARTITION BY month(invoicedate) ORDER BY sum(unitprice * quantity) DESC) as ranked
+FROM online_retail
+GROUP BY month(invoicedate), description
 )
 
-SELECT month, stockcode, description, max(month_total) as max_month_total
-FROM month_sales
-GROUP BY stockcode, description, month
-'''
+# Select final table with rank 1 and change month to 01 format:
+SELECT LPAD(month, 2, "0") as month, description, total_sales
+FROM items
+WHERE ranked =1
