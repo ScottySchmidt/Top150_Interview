@@ -24,10 +24,9 @@ C can be placed before D (500) and M (1000) to make 400 and 900.
 Given an integer, convert it to a roman nume
 """
 
-# Solution that beats 98% runtime:
 class Solution(object):
     def intToRoman(self, num):
-        roman_numerals = [
+        roman_nums = [
             ('M', 1000),
             ('CM', 900),
             ('D', 500),
@@ -42,13 +41,14 @@ class Solution(object):
             ('IV', 4),
             ('I', 1)
         ]
-        
-        romans=""
-        for roman, n in roman_numerals:
-            #print(roman, n)
-            r = num // n
-            if r > 0:
-                string = r*roman
-                romans +=string 
-                num = num -(r*n) # num now "string" less
-        return romans
+
+        romans=""  # Will store final answer
+        for roman, n in roman_nums:  # check each dictionary key
+            #print(roman, num)
+            count = num // n  # get the amount of times n can fit
+            if count >0:   # if count greater than 0 do below
+                romans_string = count * roman  # store this roman number 'x' times
+                romans = romans + romans_string # add the above roman string to final answer
+                total = count * n # get total of number 'x' times
+                num = num - total # minus from final result
+        return romans # return final answer
