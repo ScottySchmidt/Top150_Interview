@@ -28,7 +28,7 @@ randomizedSet.getRandom(); // Since 2 is the only number in the set, getRandom()
 '''
 
 # Beats 79.91% Memory and Beats 26.25% runtime.  
-# Lists are contact O(1) time compexlity. Also, most people were doing this with a sepoerate dictionary for position which I thought was confusing. 
+# YouTube Solution: https://www.youtube.com/watch?v=mGX6FDxTJqk
 from random import choice
 
 class RandomizedSet:
