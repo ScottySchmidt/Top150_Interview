@@ -16,26 +16,28 @@ Input: height = [1,1]
 Output: 1
 """
 
+# YouTube Solution: https://www.youtube.com/watch?v=-Th100yUkeY&list=UULFEFc24v0r92QNdgcXf2opPg
 class Solution(object):
     def maxArea(self, height):
         """
         :type height: List[int]
         :rtype: int
         """
-        max_height = 0
-        l = 0
-        r = len(height) -1
-
-        while l < r: 
-            left = height[l]
-            right = height[r]
-            min_height = min(left, right)
-            width = r - l
-            area = width * min_height
-            if area > max_height:
+        max_height = 0  # store max height
+        l = 0 # left index 
+        r = len(height) -1 # right index
+ 
+        while l < r:  # while searching do below:
+            left = height[l]  # get left number
+            right = height[r] # get right number
+            min_height = min(left, right)  # get min height
+            width = r - l  # get width 
+            area = width * min_height # get area
+            # Keep the highest number between the left and right pillar and move the smaller closer towards middle
+            if area > max_height:   
                 max_height = area
             if left > right:
                 r = r -1
             else:
                 l = l +1
-    return max_height
+    return max_height # this is the answer  
