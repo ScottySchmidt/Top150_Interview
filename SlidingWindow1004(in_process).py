@@ -1,6 +1,6 @@
 """
-Top 75 Big Tech Interview Questions: 
 1004. Max Consecutive Ones III: https://leetcode.com/problems/max-consecutive-ones-iii/
+Top 75 Interview Question! 
 
 Given a binary array nums and an integer k, return the maximum number of consecutive 1's in the array if you can flip at most k 0's.
 
@@ -17,7 +17,7 @@ Explanation: [0,0,1,1,1,1,1,1,1,1,1,1,0,0,0,1,1,1,1]
 Bolded numbers were flipped from 0 to 1. The longest subarray is underlined.
 """
 
-# Sliding Window Accepted Solution, Need to reattempt from memory soon:
+# Sliding Window Accepted Solution:
 class Solution(object):
     def longestOnes(self, nums, k):
         left = right = maxSize = 0 
