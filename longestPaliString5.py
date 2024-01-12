@@ -10,10 +10,6 @@ Example 2:
 
 Input: s = "cbbd"
 Output: "bb"
-------------------------
-
-This problem is useful because it teaches you how to stay within the boundaries of the index.
-This can take a while to process but useful for more advanced problems later.
 """
 
 class Solution(object):
