@@ -13,7 +13,7 @@ Output: [[1,5]]
 Explanation: Intervals [1,4] and [4,5] are considered overlapping.
 """
 
-# Final Accepted Solution:
+# Final Accepted Solution using two pointer:
 class Solution(object):
     def merge(self, intervals):
         n = len(intervals)
