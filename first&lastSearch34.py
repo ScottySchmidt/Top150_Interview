@@ -14,7 +14,7 @@ Input: nums = [5,7,7,8,8,10], target = 6
 Output: [-1,-1]
 """
 
-# Final solution beats 82% runtime:
+# Final solution beats 82% runtime using a binary search method:
 class Solution(object):
     def searchRange(self, nums, target):
         if target not in nums:
