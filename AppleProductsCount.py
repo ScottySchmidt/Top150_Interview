@@ -1,4 +1,5 @@
 '''
+
 Apple Product Counts https://platform.stratascratch.com/coding/10141-apple-product-counts?code_type=2
 
 Find the number of Apple product users and the number of total users with a device and group the counts by language. 
